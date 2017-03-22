@@ -28,10 +28,14 @@ const argv = yargs
     .command('read', 'Prints\'s single todo item', {
         title: commandsOptions.title
     })
+    .command('update', 'Update\'s todo item\'s body ', {
+        title: commandsOptions.title,
+        body: commandsOptions.body
+    })
     .command('list', 'Print\'s todo\'s list')
     .help()
     .argv;
-    
+
 const command = argv._[0];
 
 if (command === 'add') {
@@ -42,6 +46,8 @@ if (command === 'add') {
     todos.getTodo(argv.title);
 } else if (command === 'remove') {
     todos.removeTodo(argv.title)
+} else if (command === 'update') {
+    todos.updateTodo(argv.title, argv.body);
 } else {
     console.log('Command not recognized');
 }

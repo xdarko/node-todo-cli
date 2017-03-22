@@ -75,9 +75,23 @@ const removeTodo = title => {
     }
 };
 
+const updateTodo = (title, body) => {
+    let todos = fetchTodos();
+    const index = _.findIndex(todos, todo => todo.title === title);
+
+    if (index >= 0) {
+        todos[index].body = body;
+        saveTodos(todos);
+        logTodo(todos[index], 'Todo updated!');
+    } else {
+        console.log('Todo with this title not exist');
+    }
+};
+
 module.exports = {
     addTodo,
     getAll,
     getTodo,
-    removeTodo
+    removeTodo,
+    updateTodo
 };
