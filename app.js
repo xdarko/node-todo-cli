@@ -1,7 +1,8 @@
 const fs = require('fs');
 const yargs = require('yargs');
+const colors = require('colors');
 
-const todos = require('./todos.js');
+const todosAPI = require('./todosAPI.js');
 
 // contains options for yargs commands
 const commandsOptions = {
@@ -39,15 +40,15 @@ const argv = yargs
 const command = argv._[0];
 
 if (command === 'add') {
-    todos.addTodo(argv.title, argv.body);
+    todosAPI.addTodo(argv.title, argv.body);
 } else if (command === 'list') {
-    todos.getAll();
+    todosAPI.getAll();
 } else if (command === 'read') {
-    todos.getTodo(argv.title);
+    todosAPI.getTodo(argv.title);
 } else if (command === 'remove') {
-    todos.removeTodo(argv.title)
+    todosAPI.removeTodo(argv.title)
 } else if (command === 'update') {
-    todos.updateTodo(argv.title, argv.body);
+    todosAPI.updateTodo(argv.title, argv.body);
 } else {
     console.log('Command not recognized');
 }
