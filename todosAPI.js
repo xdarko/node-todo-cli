@@ -1,5 +1,6 @@
 const fs = require('fs');
 const _ = require('lodash');
+const colors = require('colors');
 
 const fetchTodos = () => {
     try {
@@ -24,7 +25,7 @@ const logTodo = (todo, message = '') => {
         ${message || '-----'}
         Title: ${todo.title}
         Body: ${todo.body}
-    `);
+    `.green);
 };
 
 const addTodo = (title, body) => {
@@ -40,7 +41,7 @@ const addTodo = (title, body) => {
         saveTodos(todos);
         logTodo(todo, 'New Todo created!');
     } else {
-        return console.log('Todo with this title already exists!');
+        return console.log('Todo with this title already exists!'.red);
     }
 };
 
@@ -58,7 +59,7 @@ const getTodo = title => {
     if (todo) {
         logTodo(todo);
     } else {
-        console.log('Todo with this title not exist');
+        console.log('Todo with this title not exist'.red);
     }
 };
 
@@ -71,7 +72,7 @@ const removeTodo = title => {
         saveTodos(todos);
         console.log(`Todo ${title} was removed!`);
     } else {
-        console.log('Todo with this title not exist');
+        console.log('Todo with this title not exist'.red);
     }
 };
 
@@ -84,7 +85,7 @@ const updateTodo = (title, body) => {
         saveTodos(todos);
         logTodo(todos[index], 'Todo updated!');
     } else {
-        console.log('Todo with this title not exist');
+        console.log('Todo with this title not exist'.red);
     }
 };
 

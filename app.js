@@ -50,5 +50,5 @@ if (command === 'add') {
 } else if (command === 'update') {
     todosAPI.updateTodo(argv.title, argv.body);
 } else {
-    console.log('Command not recognized');
+    console.log('Command not recognized'.bgWhite.red);
 }
